@@ -1,0 +1,52 @@
+<nav class="header" x-data="{ menuOpen: false }">
+    <div>Logo</div>
+    <div>
+        <ul class="main-list" x-data="{ dropdownMenuOpen: false }">
+            {% for link in linklists['main-menu'].links %}
+                {% if link.levels > 0 %}
+                    <li class="main-list-item">
+                        <button x-on:click="dropdownMenuOpen = ! dropdownMenuOpen" class="sublink">
+                            {{ link.title }}
+                            {% render 'icon-dropdown' %}
+                        </button>
+
+                        <div x-show="dropdownMenuOpen" class="dropdown dropdown_menu-6">
+                            <ul class="sublink-list" x-data="{ dropdownSubmenuOpen: false }">
+                                {% for sublink in link.links %}
+                                    {% if sublink.levels > 0 %}
+                                        <li class="main-list-item">
+                                            <button x-on:click="dropdownSubmenuOpen = ! dropdownSubmenuOpen" class="sublink">
+                                                {{ sublink.title }}
+                                                {% render 'icon-dropdown' %}
+                                            </button>
+
+                                            <div x-show="dropdownSubmenuOpen">
+                                                <ul class="sublink-list">
+                                                    {% for grand_sublink in sublink.links %}
+                                                        <li class="grand-list-item">{{ grand_sublink.title }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    {% else %}
+                                        <li class="sublink-list-item">{{ sublink.title }}</li>
+                                    {% endif %}
+
+                                    
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="main-list-item">
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                {% endif %}
+             {% endfor %}
+        </ul>
+         
+    </div>
+    <div>
+        <a href="{{ routes.account_login_url }}" class="button button-primary">Sign in</a>
+    </div>
+</nav>

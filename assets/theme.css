@@ -554,7 +554,96 @@ video {
   --tw-contain-style:  ;
 }
 
-.bg-green-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(187 247 208 / var(--tw-bg-opacity));
+nav.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.25rem;
 }
+
+nav.header ul.main-list {
+  display: flex;
+  flex-direction: row;
+  -moz-column-gap: 1.25rem;
+       column-gap: 1.25rem;
+}
+
+nav.header li.main-list-item {
+  font-size: 1rem;
+}
+
+nav.header li button.sublink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem;
+}
+
+nav.header li.main-list-item li.grand-list-item {
+  margin-left: 1rem;
+}
+
+nav .dropdown {
+  padding: 1rem;
+  border: solid 1px #000;
+  position: absolute;
+  margin-top: 1rem;
+  z-index: 9999;
+}
+
+.dropdown:hover .dropdown_menu--animated {
+  display: block;
+}
+
+.dropdown_menu-6 {
+  animation: growDown 300ms ease-in-out forwards;
+  transform-origin: top center;
+}
+
+@keyframes growDown {
+  0% {
+    transform: scaleY(0)
+  }
+
+  80% {
+    transform: scaleY(1.1)
+  }
+
+  100% {
+    transform: scaleY(1)
+  }
+}
+
+.button {
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: .5rem 1rem;
+}
+
+.button-primary {
+  color: #fff;
+  background-color: #000fff;
+}
+
+.button-primary:hover {
+  background-color: #2c3afc;
+}
+
+.size-6 {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/**
+===================================
+ BUTTONS COMPONENT
+ Dear boss,
+
+ You can continue this.
+
+ Much love,
+ MarKo with a K
+===================================
+**/
