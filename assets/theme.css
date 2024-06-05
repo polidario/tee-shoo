@@ -554,11 +554,50 @@ video {
   --tw-contain-style:  ;
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 nav.header {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   padding: 1.25rem;
+}
+
+nav.header .logo {
+  width: 50px;
 }
 
 nav.header ul.main-list {
@@ -566,6 +605,10 @@ nav.header ul.main-list {
   flex-direction: row;
   -moz-column-gap: 1.25rem;
        column-gap: 1.25rem;
+}
+
+nav.header ul.sublink-list {
+  margin-left: 1rem;
 }
 
 nav.header li.main-list-item {
@@ -615,9 +658,37 @@ nav .dropdown {
   }
 }
 
+.footer {
+  width: 100%;
+  background-color: #131118;
+  color: white;
+  padding: 2.5rem 1rem;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer .logo {
+  width: 50px;
+}
+
+.footer .navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 2.5rem;
+}
+
+.footer .footer-placeholder-img {
+  width: 100px;
+  background-color: #fff;
+}
+
 .button {
   font-size: 1rem;
   font-weight: 500;
+  height: -moz-fit-content;
+  height: fit-content;
   border-radius: 5px;
   padding: .5rem 1rem;
 }
@@ -631,19 +702,125 @@ nav .dropdown {
   background-color: #2c3afc;
 }
 
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  inset: 0px;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
 .size-6 {
   width: 1.5rem;
   height: 1.5rem;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-5 {
+  gap: 1.25rem;
+}
+
+.gap-y-5 {
+  row-gap: 1.25rem;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.text-\[20px\] {
+  font-size: 20px;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+/**
+===================================
+ NAVIGATION BAR
+ Dear Boss,
+
+ Merci beaucoup pour ton message.
+
+ I really appreciate the letter but I have not received
+ the flower yet. Perhaps, it's still in the delivering process?
+ I'll talk soon.
+
+ We love you, and we are very proud of your hardwork in tne last video.
+
+ Bisous,
+
+ Marko with a K
+===================================
+**/
+
+/**
+===================================
+ FOOTER COMPONENT
+===================================
+**/
+
 /**
 ===================================
  BUTTONS COMPONENT
- Dear boss,
-
- You can continue this.
-
- Much love,
- MarKo with a K
 ===================================
 **/
+
+@media (min-width: 768px) {
+  .md\:block {
+    display: block;
+  }
+
+  .md\:hidden {
+    display: none;
+  }
+}

@@ -2,13 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+===================================
+ NAVIGATION BAR
+ Dear Boss,
+
+ Merci beaucoup pour ton message.
+
+ I really appreciate the letter but I have not received
+ the flower yet. Perhaps, it's still in the delivering process?
+ I'll talk soon.
+
+ We love you, and we are very proud of your hardwork in tne last video.
+
+ Bisous,
+
+ Marko with a K
+===================================
+**/
 @layer components {
     nav.header {
-        @apply flex flex-row justify-between p-5
+        @apply flex flex-row justify-between items-center p-5
+    }
+
+    nav.header .logo {
+        width: 50px;
     }
 
     nav.header ul.main-list {
         @apply flex flex-row gap-x-5
+    }
+
+    nav.header ul.sublink-list {
+        margin-left: 1rem;
     }
 
     nav.header li.main-list-item {
@@ -63,22 +89,47 @@
 
 /**
 ===================================
+ FOOTER COMPONENT
+===================================
+**/
+@layer components {
+    .footer {
+        width: 100%;
+        background-color: #131118;
+        color: white;
+
+        padding: 2.5rem 1rem;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .footer .logo {
+        width: 50px;
+    }
+
+    .footer .navigation {
+        @apply flex flex-row justify-around items-start gap-10
+    }
+
+    .footer .footer-placeholder-img {
+        width: 100px;
+        background-color: #fff;
+    }
+}
+
+/**
+===================================
  BUTTONS COMPONENT
- Dear boss,
-
- You can continue this.
-
- Much love,
- MarKo with a K
 ===================================
 **/
 @layer components {
     .button {
         font-size: 1rem;
         font-weight: 500;
-
+        height: fit-content;
         border-radius: 5px;
         padding: .5rem 1rem;
+        
     }
 
     .button-primary {

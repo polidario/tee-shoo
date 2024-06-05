@@ -1,6 +1,12 @@
-<nav class="header" x-data="{ menuOpen: false }">
-    <div>Logo</div>
+<nav class="header" x-data="{ menuOpen: false, mobileOpen: false }">
     <div>
+        {% if section.settings.logo %}
+            {{ section.settings.logo | image_url: width: 150 | image_tag: class: 'logo' }}
+        {% else %}
+            <h2>{{ shop.name }}</h2>
+        {% endif %}
+    </div>
+    <div class="hidden md:block">
         <ul class="main-list" x-data="{ dropdownMenuOpen: false }">
             {% for link in linklists['main-menu'].links %}
                 {% if link.levels > 0 %}
@@ -46,7 +52,77 @@
         </ul>
          
     </div>
-    <div>
+    <div class="flex flex-rows items-center">
         <a href="{{ routes.account_login_url }}" class="button button-primary">Sign in</a>
+        <button x-on:click="mobileOpen = ! mobileOpen" class="block md:hidden button">
+            {% render 'icon-menu' %}
+        </button>
     </div>
+
+    <div x-show="mobileOpen" class="absolute inset-0 bg-white">
+        <button x-on:click="mobileOpen = ! mobileOpen" class="button">Close</button>
+        <hr class="my-5">
+        <ul class="px-5">
+             {% for link in linklists['main-menu'].links %}
+                {% if link.levels > 0 %}
+                    <li class="main-list-item mb-4">
+                        <button class="sublink text-[20px] mb-4">
+                            {{ link.title }}
+                            {% render 'icon-dropdown' %}
+                        </button>
+
+                        <div>
+                            <ul class="sublink-list">
+                                {% for sublink in link.links %}
+                                    {% if sublink.levels > 0 %}
+                                        <li class="main-list-item mb-4">
+                                            <button class="sublink text-[20px] mb-4">
+                                                {{ sublink.title }}
+                                                {% render 'icon-dropdown' %}
+                                            </button>
+
+                                            <div>
+                                                <ul class="sublink-list">
+                                                    {% for grand_sublink in sublink.links %}
+                                                        <li class="grand-list-item mb-4">
+                                                            <a href="{{ grand_sublink.url }}" class="text-[20px]">{{ grand_sublink.title }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    {% else %}
+                                        <li class="sublink-list-item mb-4">
+                                            <a href="{{ sublink.url }}" class="text-[20px]">{{ sublink.title }}</a>
+                                        </li>
+                                    {% endif %}
+
+                                    
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="main-list-item mb-4">
+                        <a href="{{ link.url }}" class="text-[20px]">{{ link.title }}</a>
+                    </li>
+                {% endif %}
+             {% endfor %}
+        </ul>
+    </div>
+    
 </nav>
+
+{% schema %}
+{
+    "name": "Header",
+    "settings": [
+            {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Logo"
+            }
+            
+        ]
+}
+{% endschema %}
